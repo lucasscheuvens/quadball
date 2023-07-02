@@ -1,0 +1,6 @@
+.DS_Store
+**/delete/**
+node_modules/
+*.pages
+*.zip
+*.php

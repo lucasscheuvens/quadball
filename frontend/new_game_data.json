@@ -1,0 +1,256 @@
+{
+  "public_id": "A-875-486-975",
+  "description": "complete",
+  "pitch": "Pitch 2",
+  "specification": null,
+  "group": "Group Stage - B",
+  "timestamp": 1683959400,
+  "tournament": 170,
+  "delay": 0,
+  "cancelled": false,
+  "cancelled_reason": null,
+  "suspended": false,
+  "suspended_reason": null,
+  "officials": [],
+  "require_officials_confirmations": true,
+  "data_available": true,
+  "alive_timestamp": 1683960996,
+  "teams": {
+      "A": {
+          "name": "Augsburg Owls",
+          "shortname": "Owls",
+          "logo": "augsburg_owls.svg",
+          "id": 1123,
+          "jersey": "custom/augsburg_owls_home",
+          "jersey_primary_color": "#FFFFFF",
+          "jersey_secondary_color": "#FFFFFF",
+          "jersey_text_color": "#000000"
+      },
+      "B": {
+          "name": "Southsea Quadball",
+          "shortname": "Southsea",
+          "logo": "custom_logo/logo_000170_00001147.png",
+          "id": 1147,
+          "jersey": "jersey_2196f3",
+          "jersey_primary_color": "#2196F3",
+          "jersey_secondary_color": "#2196F3",
+          "jersey_text_color": "#000000"
+      }
+  },
+  "gametime": {
+    "last_stop": 1352776,
+    "last_start": null,
+    "running": false
+},
+"game_over": true,
+"winner": "A",
+"in_overtime": false,
+"overtime_setscore": null,
+"in_snitch_floor": false,
+"in_seeker_floor": false,
+"forfeit": null,
+"concede": null,
+"switched": false,
+"score": {
+    "A": {
+        "quaffel_points": {
+            "regular": 170,
+            "overtime": 0,
+            "concede": 0
+        },
+        "snitch_caught": true,
+        "snitch_points": 30,
+        "total": 200
+    },
+    "B": {
+        "quaffel_points": {
+            "regular": 40,
+            "overtime": 0,
+            "concede": 0
+        },
+        "snitch_caught": false,
+        "snitch_points": 0,
+        "total": 40
+    }
+},
+"events": {
+    "score": [
+        {
+            "period": "regular",
+            "team": "A",
+            "gametime": 46342,
+            "player_number": "8",
+            "player_name": "Faust EECKHOUT"
+        },
+        {
+            "period": "regular",
+            "team": "A",
+            "gametime": 93548,
+            "player_number": "9",
+            "player_name": "Laurent VENCKELEER"
+        },
+        {
+            "period": "regular",
+            "team": "A",
+            "gametime": 172682,
+            "player_number": "9",
+            "player_name": "Laurent VENCKELEER"
+        },
+        {
+            "period": "regular",
+            "team": "A",
+            "gametime": 214366,
+            "player_number": "16",
+            "player_name": "Seppe DE WIT"
+        },
+        {
+            "period": "regular",
+            "team": "B",
+            "gametime": 302221,
+            "player_number": "88",
+            "player_name": "Daniel MORALES RUIZ"
+        },
+        {
+            "period": "regular",
+            "team": "A",
+            "gametime": 331072,
+            "player_number": "3",
+            "player_name": "Viktor MARCKX"
+        },
+        {
+            "period": "regular",
+            "team": "A",
+            "gametime": 352693,
+            "player_number": "3",
+            "player_name": "Viktor MARCKX"
+        },
+        {
+            "period": "regular",
+            "team": "A",
+            "gametime": 403722,
+            "player_number": "61",
+            "player_name": "Veerle BAUMERS"
+        },
+        {
+            "period": "regular",
+            "team": "B",
+            "gametime": 430137,
+            "player_number": "88",
+            "player_name": "Daniel MORALES RUIZ"
+        },
+        {
+            "period": "regular",
+            "team": "A",
+            "gametime": 524040,
+            "player_number": "10",
+            "player_name": "Viktor MOORTGAT"
+        },
+        {
+            "period": "regular",
+            "team": "A",
+            "gametime": 665792,
+            "player_number": "16",
+            "player_name": "Seppe DE WIT"
+        },
+        {
+            "period": "regular",
+            "team": "A",
+            "gametime": 708783,
+            "player_number": "16",
+            "player_name": "Seppe DE WIT"
+        },
+        {
+            "period": "regular",
+            "team": "A",
+            "gametime": 748027,
+            "player_number": "16",
+            "player_name": "Seppe DE WIT"
+        },
+        {
+            "period": "regular",
+            "team": "B",
+            "gametime": 814413,
+            "player_number": "88",
+            "player_name": "Daniel MORALES RUIZ"
+        },
+        {
+            "period": "regular",
+            "team": "A",
+            "gametime": 878605,
+            "player_number": null,
+            "player_name": null
+        },
+        {
+            "period": "regular",
+            "team": "A",
+            "gametime": 921142,
+            "player_number": "6",
+            "player_name": "Fien VAN ELSACKER"
+        },
+        {
+            "period": "regular",
+            "team": "A",
+            "gametime": 988230,
+            "player_number": "16",
+            "player_name": "Seppe DE WIT"
+        },
+        {
+            "period": "regular",
+            "team": "A",
+            "gametime": 1031335,
+            "player_number": "61",
+            "player_name": "Veerle BAUMERS"
+        },
+        {
+            "period": "regular",
+            "team": "A",
+            "gametime": 1172777,
+            "player_number": "16",
+            "player_name": "Seppe DE WIT"
+        },
+        {
+            "period": "regular",
+            "team": "B",
+            "gametime": 1249317,
+            "player_number": "16",
+            "player_name": "Oscar MILLA CASTILLO"
+        },
+        {
+            "period": "regular",
+            "team": "A",
+            "gametime": 1269715,
+            "player_number": "16",
+            "player_name": "Seppe DE WIT"
+        }
+    ],
+    "timeout": [
+        {
+            "period": "regular",
+            "team": "B",
+            "gametime": 756218
+        }
+    ],
+    "snitch": [
+        {
+            "period": "regular",
+            "team": "A",
+            "gametime": 1352776,
+            "player_number": "9",
+            "player_name": "Laurent VENCKELEER"
+        }
+    ],
+    "snitch_under_review": [],
+    "penalty": [
+        {
+            "color": "yellow",
+            "increment": 0,
+            "period": "regular",
+            "team": "B",
+            "gametime": 1249317,
+            "player_number": "2",
+            "player_name": "Alba MARCIAL RIDAO",
+            "reason": "Illegal physical contact"
+        }
+    ]
+  }
+}

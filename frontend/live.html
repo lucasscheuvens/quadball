@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	  <!-- Required meta tags -->
+	  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Live</title>
+    <meta name="description" content="Quadball Live">
+    <meta name="author" content="Lucas Scheuvens">
+    <link rel="icon" href="/src/img/icons/app-icon-512x512.png">
+    <link rel="stylesheet" type="text/css" href="/src/css/bootstrap.4.3.1.min.css">
+    <link rel="stylesheet" href="/fontawesome-pro-5.10.2-web/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/src/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="/src/css/live.css">
+    <link rel="stylesheet" type="text/css" href="/src/css/sidebar.css">
+    <link rel="stylesheet" type="text/css" href="/src/css/google_fonts.css">
+    <link rel="stylesheet" type="text/css" href="/src/css/checkbox_material.css">
+    <link rel="stylesheet" type="text/css" href="/src/css/ripple.css">
+    <link rel="stylesheet" type="text/css" href="/src/css/material-ripple.css">
+    <script defer src="/src/js/libraries/progressbar.js"></script>
+    <script defer src="/src/js/libraries/jquery.3.3.1.min.js"></script>
+    <script defer src="/src/js/libraries/popper.1.14.3.min.js"></script>
+    <script defer src="/src/js/libraries/bootstrap.4.3.1.min.js"></script>
+    <script defer src="/src/js/libraries/moment.min.js"></script>
+    <script defer src="/src/js/libraries/moment-timezone-with-data.js"></script>
+    <script defer src="/src/js/libraries/snap.svg-min.js"></script>
+    <script defer src="/src/js/libraries/randexp.min.js"></script>
+    <script defer src="/src/js/libraries/material-ripple.js"></script>
+    <script defer src="/src/js/libraries/socket.io.js"></script>
+
+    <link rel="stylesheet" href="/src/css/bootstrap-select.1.13.3.min.css">
+    <script defer src="/src/js/libraries/bootstrap-select.1.13.3.min.js"></script>
+    <script defer src="/src/js/libraries/bootstrap-select.defaults-en_US.min.js"></script>
+
+    <script defer type="text/javascript" src="/src/js/cookies.js"></script>
+    <script defer type="text/javascript" src="/src/js/get_url_param.js"></script>
+
+    <script defer src="/src/js/live/main.js"></script>
+    <script defer src="/src/js/live/filter.js"></script>
+    <script defer src="/src/js/live/servertime.js"></script>
+    <script defer src="/src/js/live/gettournamentinfos.js"></script>
+    <script defer src="/src/js/live/delay.js"></script>
+    <script defer src="/src/js/live/datahandling.js"></script>
+    <script defer src="/src/js/live/scrollbars.js"></script>
+    <script defer src="/src/js/live/socket.js"></script>
+    <script defer src="/src/js/live/tournamentlinks.js"></script>
+    <script defer src="/src/js/live/eventscheckbox.js"></script>
+    <script defer src="/src/js/live/toggleview.js"></script>
+    <script defer src="/src/js/live/rendering.js"></script>
+
+    <link rel="manifest" href="manifest.json">
+	</head>
+	<body style="height:100vh;">
+    <div style="display:flex;flex-flow:column nowrap;height:100%;">
+      <div style="display:flex;flex-flow:column;align-items:center;justify-content:center;margin-bottom:10px;background-color:#004D40;box-shadow:0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);">
+        <div style="display:flex;width:100%;justify-content:center;padding-left:10px;padding-right:10px;height:58px;">
+          <div style="display:flex;flex:1;justify-content:center;margin:10px 0px;max-width:300px;">
+            <select id="tournament_selectpicker" class="selectpicker" data-style="custom-select hundredwidth" data-width="100%" data-live-search="true" title="Choose tournament" style="display:none;"></select>
+          </div>
+          <div id="link_container" style="display:none;margin-left:10px;">
+            <div id="link_button" class="cursor_pointer" style="display:flex;padding:5px;margin-right:2px;margin-bottom:10px;margin-top:10px;color:white;align-items:center;" data-toggle="popover" title="Links" data-html="true" data-container="body" data-placement="bottom" data-offset="-100px" data-content="">
+              <i class="far fa-link"></i>
+            </div>
+          </div>
+          <div id="filter_container" style="display:none;margin-left:10px;">
+            <div id="filter_button" class="cursor_pointer" style="display:flex;padding:5px;margin-right:2px;margin-bottom:10px;margin-top:10px;color:white;align-items:center;position:relative;" data-toggle="modal" data-target="#modalFilter">
+              <i class="far fa-filter"></i>
+              <div style="display:none;position:absolute;top:-7px;left:50%;" id="numberOfFiltersBadge">
+                <span class="badge badge-pill badge-success" style="font-size:60%;" id="numberOfFilters">3</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:center;margin-bottom:8px;">
+        <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4" style="display:flex;justify-content:flex-start;padding-left:15px;padding-right:15px;flex-wrap:wrap;">
+          <button class="btn btn-secondary" id="new-data-button">Get new data for Owls-Southsea game</button>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:center;margin-bottom:8px;">
+        <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4" style="display:flex;justify-content:flex-start;padding-left:15px;padding-right:15px;flex-wrap:wrap;" id="active_day_container">
+        </div>
+      </div>
+      <div style="display:flex;flex:1;justify-content:center;overflow-y:auto;">
+        <div id="tournament_defined" class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4" style="display:none;justify-content:center;padding:0;height:100%;">
+          <div class="custom_scroll" style="width:100%;overflow-y:scroll;overflow-x:hidden;">
+            <div style="display:none;justify-content:flex-start;flex-flow:column;padding-left:0px;padding-right:3px;position:relative;margin-bottom:30px;" id="content_games">
+            </div>
+            <div id="loading_page" class="container">
+              <div class="row justify-content-center d-none">
+                <!--<div id="loading_symbol" style="display:inline;margin:20px;"><i class="fas fa-spin fa-circle-notch fa-3x"></i></div>-->
+                <div class="col-6 col-sm-4 col-lg-3" style="margin-top:50px;">
+                  <div class="progress" id="loading_progress_container">
+                    <div class="progress-bar" id="loading_progress" role="progressbar" style="width:0%;background-color:#004D40;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                  </div>
+                </div>
+              </div>
+              <div class="row justify-content-center">
+                <div class="col-12">
+                  <div id="error_message_container" class="alert alert-danger d-none">              
+                  </div>
+                </div>
+              </div>
+              <div class="row justify-content-center">
+                <div class="col-12">
+                  <div id="connection_error" class="alert alert-info d-none"> 
+                    <strong>Connection failed</strong><br>Your internet connection seems to be too slow for a good experience. <i class="far fa-frown"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="scrollbar_container" style="width:0px;position:relative;">
+            <div id="scrollbar" style="position:absolute;right:10px;top:0px;width:3px;height:100%;">
+              <!-- CONTENT -->
+            </div> 
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modalFilter" tabindex="-1" role="dialog" aria-labelledby="modalFilterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="modalFilterTitle">Filter Games</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true"><i class="fas fa-times"></i></span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row" style="margin-bottom:10px;">
+                <div class="col-12">
+                  <h5 style="margin-bottom:2px;"><strong>Active Filters</strong> <i class="far fa-info-circle" data-toggle="tooltip" title="linked with logical OR"></i></h5>
+                  <div id="active_filters_view">
+                    
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <div class="row" style="margin-bottom:10px;">
+                <div class="col-12">
+                  <h5 style="margin-bottom:2px;">Add Filter</h5>
+                  <i style="font-size:80%;">Add a custom filter term or tap the predefined items below.</i>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12" style="margin-bottom:-1rem;">
+                  <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Custom Filter" aria-label="Filter text" aria-describedby="basic-addon2" id="customFilterInput">
+                    <div class="input-group-append">
+                      <button class="btn btn-dark" type="button" id="addCustomFilterButton">Add</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row" style="margin-bottom:10px;">
+                <div class="col-12">
+                  <div id="suggested_filters_view">
+                    
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button id="applyFiltersButton" type="button" class="btn btn-primary">Apply</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" >
+      const auth = '6f0b392603153c5b8d8337e911e8bf16'; // auth for "all"
+      // all
+      var all_tournament_infos = {}; // THIS WILL NOT BE RESET
+      var tournament_info;
+      var game_infos;
+      var sorting_array;
+      var show_events;
+      var ausfuehrlich;
+      //var ws, ;
+      //var ws_server, ws_port;
+      var socket;
+      var public_game_ids;
+      var running_clocks;
+      var last_alive;
+      var socket_connection_completely_established;
+      var tournament_id;
+      var rulebook;
+      // rendering
+      var last_recent_enough_evaluation;
+      var active_date;
+      // gettournamentinfos
+      var claimed_tournament_id;
+      // socket
+      var load_complete;
+      var team_id_to_name;
+      // servertime
+      var diff_server_to_local;
+      // filter
+      var filters_active;
+      var filters_suggested_pitches;
+      var filters_suggested_groups;
+      var filters_suggested_specifications;
+      var filters_suggested_teams;
+      var filter_indexterms;
+      
+      initGlobalVariables = function()
+      {
+        // all
+        // all_tournament_infos = {}; // DO NOT RESET THIS
+        tournament_info;
+        game_infos = {};
+        sorting_array = [];
+        show_events = {};
+        ausfuehrlich = {};
+        //ws, socket;
+        //ws_server, ws_port;
+        public_game_ids;
+        running_clocks = {};
+        last_alive = {};
+        socket_connection_completely_established = false;
+        tournament_id = null;
+        rulebook = null;
+        // gettournamentinfos
+        claimed_tournament_id = getCookie('tournament');
+        // socket
+        load_complete = false;
+        team_id_to_name = {};
+        // servertime
+        diff_server_to_local = 0;
+        // filter
+        filters_active = [];
+        filters_suggested_pitches = [];
+        filters_suggested_groups = [];
+        filters_suggested_specifications = [];
+        filters_suggested_teams = [];
+        filter_indexterms = {};
+        // rendering
+        last_recent_enough_evaluation = {};
+        active_date = null;
+      }
+
+      window.addEventListener('DOMContentLoaded', async function() 
+      {
+        // set time language to english
+        moment.locale('en');
+        moment.tz.setDefault(); // explicitly set local timezone as the user's timezone
+        // moment.tz.setDefault(tournament_info.timezone); // set to tournament's timezone
+
+        // reload page on tournament change (set cookie before)
+        $('#tournament_selectpicker').on('changed.bs.select', function (e, clickedIndex, isSelected, previousValue)
+        {
+          initGlobalVariables(); // reset all cross-function variables
+
+          tournament_id = parseInt( $('#tournament_selectpicker').val() );
+          rulebook = all_tournament_infos[tournament_id].rulebook;
+          setCookie('tournament', tournament_id, 7);
+          
+          resetViews(); // empty all displayed data
+          main();
+          //window.location = window.location.pathname;
+        });
+
+        setTimeout(function() { if(!socket_connection_completely_established){ $("#loading_symbol").hide(); /* $("#error_message_container").removeClass('d-none'); */ $("#connection_error").removeClass('d-none'); } }, 5000);
+        $(function(){$('[data-toggle="tooltip"]').tooltip()});
+
+        try
+        {
+          initGlobalVariables();
+          setInterval(() => { detectRecentEnoughChanges( true ) }, 1000);
+          await requestTournamentList();
+          main()
+        }
+        catch(err)
+        {
+          console.error(err);
+        }
+
+        // sync to server time
+        //
+        // every second check if a game needs to be "redened" (connection lost)
+        //
+        // if tournament id is defined, start program, else highlight selectpicker
+        
+        //else{$("#tournament_selectpicker").selectpicker({'style':'btn-light'}).selectpicker('refresh');}
+        
+        // if socket.io connection is not established after 5 seconds, display error messages
+        
+      });
+
+    </script>
+        
+	   	    
+	</body>
+	
+</html>
